@@ -88,16 +88,17 @@ void playerMove(void)
 int getInput(void)
 {
   char s[STR];
+  char *e;
   int n;
   
   do {
     printf("1: Up, 2: Down, 3: Left, 4: Right ... ");
     scanf("%s", s);
-    n = atoi(s);
+    n = strtod(s, &e);
     if (! (1 <= n && n <= 4)) {
       puts("try again.");
     }
-  } while(! (1 <= n && n <= 4));
+  } while(! (1 <= n && n <= 4) || (n == 0 && e != s) );
 
   return n;
 }

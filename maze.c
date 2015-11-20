@@ -50,9 +50,12 @@ void drawMap(void) {
 
 void playerMove(void) {
   int n;
-  printf("1: Up, 2: Down, 3: Right, 4: Left ... ");
-  n = getInput();
-  if ( ! canMove(n) ) {}
+
+  do {
+    printf("1: Up, 2: Down, 3: Left, 4: Right ... ");
+    n = getInput();
+  }while (!(canMove(n)));
+
   switch ( n ) {
   case 1 :
     playerx--;
@@ -61,10 +64,10 @@ void playerMove(void) {
     playerx++;
     break;
   case 3 :
-    playery++;
+    playery--;
     break;
   case 4 :
-    playery--;
+    playery++;
     break;
   }
 }

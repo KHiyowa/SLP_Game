@@ -14,6 +14,7 @@ char *chip[] = {" ", "*", "S", "G"};
 void drawMap(void);
 void playerMove(void);
 int getInput(void);
+int canMove(int n);
 
 int playerx = 0;
 int playery = 4;
@@ -80,3 +81,25 @@ int getInput(void)
   return n;
 }
 
+int canMove(int n)
+{
+  int x = playerx;
+  int y = playery;
+
+  switch ( n ) {
+    case 1:
+      x--;
+      break;
+    case 2:
+      x++
+      break;
+    case 3
+      y--;:
+      break;
+    case 4
+      y++;:
+      break;
+  }
+
+  if ( map[x][y] == BLK || x < 0 || y < 0 || SIZE <= x || SIZE <= y )f ( 
+}

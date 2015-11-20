@@ -12,14 +12,17 @@ enum status a[SIZE][SIZE] = {{BLK, BLK, BLK, BLK, ST, BLK},
 char *chip[] = {" ", "*", "S", "G"};
 
 void drawMap(void);
+int getInput(void);
 
 int playerx = 0;
 int playery = 4;
 
 int main(void)
 {
+  int n;
   drawMap();
-  
+  n = getInput();
+  printf("%d/n", n);
 
   
   return 0;
@@ -39,3 +42,17 @@ void drawMap(void) {
     puts("");
   }
 }
+
+int getInput(void)
+{
+  int n;
+
+  scanf("%d", &n);
+  while ( ! ( 1 <= n && n <= 4 ) ) {
+    puts("try again.");
+    scanf("%d", &n);
+  }
+
+  return n;
+}
+

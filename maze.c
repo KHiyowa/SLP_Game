@@ -1,9 +1,11 @@
 //====  ヘッダ
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 //====  定数マクロ
 #define SIZE 6
+#define STR  256
 
 //====  グローバル宣言
 enum status {EMP, BLK, ST, GL};
@@ -58,10 +60,12 @@ void drawMap(void)
 void playerMove(void)
 {
   int n;
-
+  
   do {
-    printf("1: Up, 2: Down, 3: Left, 4: Right ... ");
     n = getInput();
+    if (!(canMove(n))) {
+      printf("Can't move!! Try again!\n");
+    }
   } while (!(canMove(n)));
 
   switch ( n ) {
@@ -83,10 +87,13 @@ void playerMove(void)
 //====  入力を受け取って返却する関数
 int getInput(void)
 {
+  char s[STR];
   int n;
-
+  
   do {
-    scanf("%d", &n);
+    printf("1: Up, 2: Down, 3: Left, 4: Right ... ");
+    scanf("%s", s);
+    n = atoi(s);
     if (! (1 <= n && n <= 4)) {
       puts("try again.");
     }

@@ -29,6 +29,7 @@ int main(void)
     drawMap();
     playerMove();
   }
+  drawMap();
   puts("Goal!");
 
   return 0;

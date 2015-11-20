@@ -2,15 +2,26 @@
 
 enum status {EMP, BLK, ST, GL};
 
-define SIZE 6
+#define SIZE 6
 enum status a[SIZE][SIZE] = {{BLK, BLK, BLK, BLK, ST, BLK},
                              {BLK, EMP, EMP, BLK, EMP, BLK},
-                             {BLK, BLK, BLK, BLK, EMP, BLK},
+                             {BLK, BLK, EMP, BLK, EMP, BLK},
                              {BLK, EMP, BLK, BLK, EMP, BLK},
                              {BLK, EMP, BLK, BLK, EMP, BLK},
-                             {BLK, GL, BLK}}
+                             {BLK, GL, BLK, BLK, BLK, BLK}};
+char *chip[] = {" ", "*", "S", "G"};
 
-  int main(void)
+int main(void)
 {
-  a[SIZE][SIZE] = {{}}
+  
+}
+
+void drawMap(void) {
+    int i, j;
+
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("%s", chip[a[i][j]]);
+        }
+    }
 }

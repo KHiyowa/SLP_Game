@@ -18,14 +18,15 @@ int getInput(void);
 int playerx = 0;
 int playery = 4;
 
+
 int main(void)
 {
-  int n;
-  drawMap();
-  n = getInput();
-  // printf("%d/n", n);
 
-
+  while ( 1 ) {
+    drawMap();
+    playerMove();
+    // printf("%d/n", n);
+  }
   
   return 0;
 }
@@ -47,15 +48,28 @@ void drawMap(void) {
 
 void playerMove(void) {
   int n;
+  printf("1: Up, 2: Down, 3: Right, 4: Left ... ");
   n = getInput();
-
+  switch ( n ) {
+  case 1 :
+    playerx--;
+    break;
+  case 2 :
+    playerx++;
+    break;
+  case 3 :
+    playery++;
+    break;
+  case 4 :
+    playery--;
+    break;
+  }
 }
 
 int getInput(void)
 {
   int n;
 
-  scanf("%d", &n);
   do {
     scanf("%d", &n);
     if (! (1 <= n && n <= 4)) {

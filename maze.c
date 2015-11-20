@@ -19,18 +19,23 @@ int playery = 4;
 int main(void)
 {
   drawMap();
+  
 
   
   return 0;
 }
 
 void drawMap(void) {
-    int i, j;
-
-    for (i = 0; i < SIZE; i++) {
-        for (j = 0; j < SIZE; j++) {
-            printf("%s", chip[a[i][j]]);
-        }
-        puts("");
+  int i, j;
+  
+  for (i = 0; i < SIZE; i++) {
+    for (j = 0; j < SIZE; j++) {
+      if ( playerx == i && playery == j ) {
+        printf("X");
+      } else {
+        printf("%s", chip[a[i][j]]);
+      }
     }
+    puts("");
+  }
 }

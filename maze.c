@@ -1,9 +1,12 @@
+//====  ヘッダ
 #include <stdio.h>
 #include <stdbool.h>
 
-enum status {EMP, BLK, ST, GL};
-
+//====  定数マクロ
 #define SIZE 6
+
+//====  グローバル宣言
+enum status {EMP, BLK, ST, GL};
 enum status a[SIZE][SIZE] = {{BLK, BLK, BLK, BLK, ST, BLK},
                              {BLK, EMP, EMP, BLK, EMP, BLK},
                              {BLK, EMP, EMP, BLK, EMP, BLK},
@@ -11,16 +14,15 @@ enum status a[SIZE][SIZE] = {{BLK, BLK, BLK, BLK, ST, BLK},
                              {BLK, EMP, EMP, EMP, EMP, BLK},
                              {BLK, GL, BLK, BLK, BLK, BLK}};
 char *chip[] = {" ", "*", "S", "G"};
+int playerx = 0;
+int playery = 4;
 
+//====  プロトタイプ宣言
 void drawMap(void);
 void playerMove(void);
 int getInput(void);
 bool canMove(int n);
 bool isGoal(void);
-
-int playerx = 0;
-int playery = 4;
-
 
 int main(void)
 {
@@ -35,9 +37,11 @@ int main(void)
   return 0;
 }
 
-void drawMap(void) {
+//====  マップを描画する関数
+void drawMap(void)
+{
   int i, j;
-  
+
   for (i = 0; i < SIZE; i++) {
     for (j = 0; j < SIZE; j++) {
       if ( playerx == i && playery == j ) {
@@ -50,13 +54,15 @@ void drawMap(void) {
   }
 }
 
-void playerMove(void) {
+//====  プレイヤーを移動する関数
+void playerMove(void)
+{
   int n;
 
   do {
     printf("1: Up, 2: Down, 3: Left, 4: Right ... ");
     n = getInput();
-  }while (!(canMove(n)));
+  } while (!(canMove(n)));
 
   switch ( n ) {
   case 1 :
@@ -74,6 +80,7 @@ void playerMove(void) {
   }
 }
 
+//====  入力を受け取って返却する関数
 int getInput(void)
 {
   int n;
@@ -88,6 +95,7 @@ int getInput(void)
   return n;
 }
 
+//====  移動できるか確認する関数
 bool canMove(int n)
 {
   int x = playerx;
@@ -114,6 +122,7 @@ bool canMove(int n)
   return true;
 }
 
+//====  ゴール判定関数
 bool isGoal(void)
 {
   if ( a[playerx][playery] == GL ) {

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 enum status {EMP, BLK, ST, GL};
 
@@ -14,7 +15,7 @@ char *chip[] = {" ", "*", "S", "G"};
 void drawMap(void);
 void playerMove(void);
 int getInput(void);
-int canMove(int n);
+bool canMove(int n);
 
 int playerx = 0;
 int playery = 4;
@@ -51,6 +52,7 @@ void playerMove(void) {
   int n;
   printf("1: Up, 2: Down, 3: Right, 4: Left ... ");
   n = getInput();
+  if ( ! canMove(n) ) {}
   switch ( n ) {
   case 1 :
     playerx--;
@@ -81,7 +83,7 @@ int getInput(void)
   return n;
 }
 
-int canMove(int n)
+bool canMove(int n)
 {
   int x = playerx;
   int y = playery;
@@ -91,15 +93,18 @@ int canMove(int n)
       x--;
       break;
     case 2:
-      x++
+      x++;
       break;
-    case 3
-      y--;:
+    case 3:
+      y--;
       break;
-    case 4
-      y++;:
+    case 4:
+      y++;
       break;
   }
 
-  if ( map[x][y] == BLK || x < 0 || y < 0 || SIZE <= x || SIZE <= y )f ( 
+  if ( x < 0 || y < 0 || SIZE <= x || SIZE <= y || a[x][y] == BLK ) {
+    return false;
+  }
+  return true;
 }

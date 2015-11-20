@@ -16,6 +16,7 @@ void drawMap(void);
 void playerMove(void);
 int getInput(void);
 bool canMove(int n);
+bool isGoal(void);
 
 int playerx = 0;
 int playery = 4;
@@ -24,12 +25,13 @@ int playery = 4;
 int main(void)
 {
 
-  while ( 1 ) {
+  while ( ! isGoal() ) {
     drawMap();
     playerMove();
-    // printf("%d/n", n);
   }
-  
+  drawMap();
+  puts("Goal!");
+
   return 0;
 }
 
@@ -111,3 +113,13 @@ bool canMove(int n)
   }
   return true;
 }
+
+bool isGoal(void)
+{
+  if ( a[playerx][playery] == GL ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+

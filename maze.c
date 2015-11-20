@@ -133,10 +133,6 @@ bool canMove(int n)
 //====  ゴール判定関数
 bool isGoal(void)
 {
-  if ( a[playerx][playery] == GL ) {
-    return true;
-  } else {
-    return false;
-  }
+  return a[playerx][playery] == GL;
 }
 

@@ -98,7 +98,7 @@ int getInput(void)
     if (! (1 <= n && n <= 4)) {
       puts("try again.");
     }
-  } while(! (1 <= n && n <= 4) || (n == 0 && e != s) );
+  } while(! (1 <= n && n <= 4) || (n == 0 && e == s) );
 
   return n;
 }
